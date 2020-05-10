@@ -1,16 +1,22 @@
 import React, { Component } from "react";
 import AboutPage from "./about/AboutPage";
 import HomePage from "./home/HomePage";
-import { BrowserRouter, Route } from "react-router-dom";
+import MangeCourse from "./course/MangeCourse";
+import { Switch, Route } from "react-router-dom";
+import Header from "./common/Header";
+import PageNotFound from "./common/PageNotFound";
 export default class App extends Component {
   render() {
     return (
-      <div>
-        <BrowserRouter>
+      <div className="container">
+        <Header />
+        <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/home" component={HomePage} />
           <Route path="/about" component={AboutPage} />
-        </BrowserRouter>
+          <Route path="/course" component={MangeCourse} />
+          <Route component={PageNotFound} />
+        </Switch>
       </div>
     );
   }
